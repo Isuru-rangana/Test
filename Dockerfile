@@ -14,10 +14,10 @@ RUN groupadd -g 10016 choreo && \
 COPY ./app .
 
 # Change ownership of the application files
-RUN chown -R choreouser:choreo /app
+RUN chown -R 10016:10016 /app
 
-# Switch to non-root user
-USER choreouser
+# Switch to non-root user using explicit UID (Choreo requirement)
+USER 10016
 
 # Expose the port
 EXPOSE 8080
